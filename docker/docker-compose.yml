@@ -1,4 +1,4 @@
-version: '3.8'
+# version: '3.8'
 
 services:
   wordpress:
@@ -15,11 +15,17 @@ services:
       - ../config/wp-config.php:/var/www/html/wp-config.php
       - ../plugins:/var/www/html/wp-content/plugins
       - ../scripts/post-init.sh:/post-init.sh
-    command: ["/bin/bash", "-c", "/post-init.sh && docker-entrypoint.sh apache2-foreground"]
+    command:
+      [
+        "/bin/bash",
+        "-c",
+        "/post-init.sh && docker-entrypoint.sh apache2-foreground",
+      ]
 
   db:
     image: mysql:5.7
     restart: always
+    platform: linux/amd64
     environment:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress

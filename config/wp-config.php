@@ -11,8 +11,8 @@ define('DB_HOST', 'db');
 
 define('WP_DEBUG', true);
 define('WP_DEBUG_LOG', true);
-define('WP_DEBUG_DISPLAY', false);
-@ini_set('display_errors', 0);
+define('WP_DEBUG_DISPLAY', true);
+@ini_set('display_errors', 1);
 
 define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
 define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
@@ -21,8 +21,8 @@ $table_prefix = 'wp_';
 
 define('FS_METHOD', 'direct');
 
-if ( !defined('ABSPATH') ) {
+if (!defined('ABSPATH')) {
     define('ABSPATH', dirname(__FILE__) . '/');
 }
 
-require_once(ABSPATH . 'wp-settings.php'); 
+require_once(ABSPATH . 'wp-settings.php');
